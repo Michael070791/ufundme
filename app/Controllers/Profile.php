@@ -1,12 +1,15 @@
 <?php
 
+
 namespace App\Controllers;
+use App\Controllers\BaseController;
+use App\Models\UserModel;
 
 class Profile extends BaseController
 {
     public function index()
     {
-        return view('layout/default');
+        return view('profile/dashboard');
     }
 
     public function login()
@@ -28,7 +31,7 @@ class Profile extends BaseController
 
             if (!$this->validate($rules, $errors)) {
 
-                return view('profile/login', [
+                return view('login', [
                     "validation" => $this->validator,
                 ]);
 
@@ -41,7 +44,7 @@ class Profile extends BaseController
                 // Stroing session values
                 $this->setUserSession($user);
                 // Redirecting to dashboard after login
-                return redirect()->to(base_url('profile/dashboard'));
+                return redirect()->to(base_url('dashboard'));
 
             }
         }
@@ -52,8 +55,10 @@ class Profile extends BaseController
     {
         $data = [
             'id' => $user['id'],
-            'name' => $user['name'],
-            'phone_no' => $user['phone_no'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'phone_number' => $user['phone_number'],
+            'image' => $user['image'],
             'email' => $user['email'],
             'isLoggedIn' => true,
         ];
@@ -69,11 +74,11 @@ class Profile extends BaseController
         if ($this->request->getMethod() == 'post') {
             //let's do the validation here
             $rules = [
-                'name' => 'required|min_length[3]|max_length[20]',
-                'phone_no' => 'required|min_length[9]|max_length[20]',
-                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[tbl_users.email]',
+                'first_name' => 'required|min_length[3]|max_length[20]',
+                'last_name' => 'required|min_length[3]|max_length[20]',
+                'phone_number' => 'required|min_length[3]|max_length[20]',
+                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[8]|max_length[255]',
-                'password_confirm' => 'matches[password]',
             ];
 
             if (!$this->validate($rules)) {
@@ -85,15 +90,16 @@ class Profile extends BaseController
                 $model = new UserModel();
 
                 $newData = [
-                    'name' => $this->request->getVar('name'),
-                    'phone_number' => $this->request->getVar('phone_no'),
+                    'first_name' => $this->request->getVar('first_name'),
+                    'last_name' => $this->request->getVar('last_name'),
+                    'phone_number' => $this->request->getVar('phone_number'),
                     'email' => $this->request->getVar('email'),
                     'password' => $this->request->getVar('password'),
                 ];
                 $model->save($newData);
                 $session = session();
                 $session->setFlashdata('success', 'Successful Registration');
-                return redirect()->to(base_url('profile/login'));
+                return redirect()->to(base_url('login'));
             }
         }
         return view('profile/register');
@@ -112,7 +118,7 @@ class Profile extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('profile/login');
+        return redirect()->to('login');
     }
 
 

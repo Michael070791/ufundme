@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'codeigniter4/appstarter',
-        'pretty_version' => 'v4.2.7',
-        'version' => '4.2.7.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '508f06dfd3a83f0abe088273a21614fc61138421',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'codeigniter4/appstarter' => array(
-            'pretty_version' => 'v4.2.7',
-            'version' => '4.2.7.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '508f06dfd3a83f0abe088273a21614fc61138421',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -342,6 +342,21 @@
             'install_path' => __DIR__ . '/../theseer/tokenizer',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'twbs/bootstrap' => array(
+            'pretty_version' => 'v5.2.2',
+            'version' => '5.2.2.0',
+            'reference' => '961d5ff9844372a4e294980c667bbe7e0651cdeb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twbs/bootstrap',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twitter/bootstrap' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v5.2.2',
+            ),
         ),
     ),
 );

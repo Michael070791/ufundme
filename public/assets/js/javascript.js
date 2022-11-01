@@ -5,3 +5,12 @@ function toggleMenu() {
         menuItem.classList.toggle("hidden");
     }
 }
+
+function togglePassword(){
+    var passwordValue = document.getElementById("password");
+    if(passwordValue.type === "password"){
+        passwordValue.type = "text";
+    }else{
+        passwordValue.type = "password";
+    }
+}
