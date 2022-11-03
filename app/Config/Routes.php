@@ -38,9 +38,14 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->match(['get', 'post'], 'register', 'Profile::register', ['filter' => 'noauth']);
 $routes->match(['get', 'post'], 'login', 'Profile::login', ['filter' => 'noauth']);
+
+//fundraise
+$routes->match(['get', 'post'], 'create', 'Fundraiser::create', ['filter' => 'auth']);
+
 $routes->get('dashboard', 'Profile::index', ['filter' => 'auth']);
 $routes->get('profile', 'Profile::index', ['filter' => 'auth']);
 $routes->get('logout', 'Profile::logout');
+
 
 /*
  * --------------------------------------------------------------------

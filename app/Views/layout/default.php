@@ -71,7 +71,7 @@
                   <?php else: ?>
                     <li class="menu-item"><a href="<?php echo base_url('login')?>" >Sign in</a></li>
             <?php endif;?>
-            <li class="menu-item"><a href="" >Start a UFundme</a>
+            <li class="menu-item"><a href="<?php echo base_url('create')?>" >Start a UFundme</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
