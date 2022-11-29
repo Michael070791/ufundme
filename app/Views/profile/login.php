@@ -14,22 +14,18 @@
                             </div>
                         </div>
                 <?php endif; ?>
-                <form class="" action="<?= base_url('login') ?>" method="post">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1"><a class="glyphicon glyphicon-user"></a></span>
+                <form class="row g-3" action="<?= base_url('login') ?>" method="post">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-sharp fa-solid fa-user"></i></span>
                                 <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1" role="button" onClick="togglePassword()"><a class="glyphicon glyphicon-eye-close"></a></span>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1" role="button" onClick="togglePassword()"><i id="togglePassword" class="fa-sharp fa-solid fa-eye-slash"></i></span>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="basic-addon1">
                             </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-6" >
-                                <button type="submit" class="btn btn-success">Login</button>
+                                <button type="submit" class="btn btn-outline-success">Login</button>
                             </div>
                             <div class="col-md-6">
                                 <a class="forgot-password" href= "" >forgot password</a>
@@ -39,7 +35,7 @@
                 <hr/>
                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
                     <div class="btn-group" role="group">
-                        <a role="button" href="<?php echo base_url('register')?>" class="btn btn-default">Register</a>
+                        <a role="button" href="<?php echo base_url('register')?>" class="btn btn-outline-primary">Register</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class FundraiserModel extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'fundraise';
@@ -16,18 +16,19 @@ class UserModel extends Model
 	protected $protectFields        = true;
 	protected $allowedFields        = [
         "user_id",
-		"first_name",
-        "last_name",
         "organisation",
-        "gpscode",
         "cause",
 		"email",
         "country",
         "city",
-        "address",
+        "address_one",
+		"address_two",
 		"phone_number",
-		"password",
-        "image"
+        "image",
+		"created_at",
+		"verified",
+		"target_amount",
+		"updated_at"
 	];
 
 	// Dates
@@ -45,7 +46,7 @@ class UserModel extends Model
 
 	// Callbacks
 	protected $allowCallbacks       = true;
-	protected $beforeInsert         = ["beforeInsert"];
+	protected $beforeInsert         = [];
 	protected $afterInsert          = [];
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
@@ -54,18 +55,5 @@ class UserModel extends Model
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
 
-	protected function beforeInsert(array $data)
-	{
-		$data = $this->passwordHash($data);
-		return $data;
-	}
-
-	protected function passwordHash(array $data)
-	{
-		if (isset($data['data']['password'])) {
-			$data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-		}
-
-		return $data;
-	}
+	
 }

@@ -4,6 +4,7 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\FundraiserModel;
 
 class Profile extends BaseController
 {
@@ -44,7 +45,7 @@ class Profile extends BaseController
                 // Stroing session values
                 $this->setUserSession($user);
                 // Redirecting to dashboard after login
-                return redirect()->to(base_url('dashboard'));
+                return redirect()->to(base_url('/'));
 
             }
         }
@@ -105,12 +106,14 @@ class Profile extends BaseController
         return view('profile/register');
     }
 
-    public function profile()
+    public function funds()
     {
 
         $data = [];
         $model = new UserModel();
+        $fundraiseModel = new FundraiserModel();
 
+        $data['userFunds'] = $fundraiseModel->where('email', session()->get('email'))->findAll();
         $data['user'] = $model->where('id', session()->get('id'))->first();
         return view('profile/dashboard', $data);
     }

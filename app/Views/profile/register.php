@@ -14,36 +14,30 @@
                             </div>
                         </div>
                 <?php endif; ?>
-                <form class="" action="<?= base_url('register') ?>" method="post">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-describedby="basic-addon1">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">  
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-describedby="basic-addon1">
-                                </div>
-                            </div>
+                <form class="row" action="<?= base_url('register') ?>" method="post">
+                            
+                        <div class="col-sm-6 mb-3">
+                            <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-describedby="basic-addon1">
                         </div>
-                        <div class="form-group">
+                            
+                            
+                        <div class="col-sm-6 mb-3">
+                            <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-describedby="basic-addon1">
+                        </div>
+                           
+                        <div class="mb-3">
                             <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <input type="text" class="form-control" name="phone_number" placeholder="Phone Number" aria-describedby="basic-addon1">
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1" role="button" onClick="togglePassword()"><a class="glyphicon glyphicon-eye-close"></a></span>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="basic-addon1">
-                            </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" role="button" onClick="togglePassword()"><i id="togglePassword"  class="fa-sharp fa-solid fa-eye-slash"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="basic-addon1">
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6" >
-                                <button type="submit" class="btn btn-primary">Sig up</button>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-primary">Register</button>
                             </div>
-                        </div>
                 </form>
             </div>
         </div>

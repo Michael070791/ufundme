@@ -41,6 +41,8 @@ $routes->match(['get', 'post'], 'login', 'Profile::login', ['filter' => 'noauth'
 
 //fundraise
 $routes->match(['get', 'post'], 'create', 'Fundraiser::create', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'edit/(:num)', 'Fundraiser::edit/$1', ['filter' => 'auth']);
+$routes->match(['get'], 'funds', 'Profile::funds');
 
 $routes->get('dashboard', 'Profile::index', ['filter' => 'auth']);
 $routes->get('profile', 'Profile::index', ['filter' => 'auth']);
