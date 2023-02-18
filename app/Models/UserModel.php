@@ -23,7 +23,9 @@ class UserModel extends Model
         "address",
 		"phone_number",
 		"password",
-        "image"
+        "image",
+		"admin",
+		"active"
 	];
 
 	// Dates

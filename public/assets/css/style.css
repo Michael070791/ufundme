@@ -12,19 +12,24 @@
    --sidebar-hover-link: #27496D;
    --action-color: #0C7B93;
    --action-color-hover: #00A8CC;
+   --dogerBlue:#446afb;
    --app-content-secondary-color: #142850;
    --filter-reset: #2c394f;
-   --filter-shadow: rgba(16, 24, 39, 0.8) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+   --greenColor: #35b56b;
+   --lightGrey: #c7c7c7;
+   --darkGrey: #b4b4b4;
 }
 * {
     transition: background-color 300ms ease, color 300ms ease;
+    font-size: 13px;
 }
 *:focus {
-    background-color: rgba(221, 72, 20, .2);
+    background-color: var(--sidebar);
     outline: none;
 }
 html, body {
     color: var(--whiteColor);
+    background: linear-gradient(90deg, rgba(244,244,247,1) 0%, rgba(236,234,255,1) 47%, rgba(243,247,247,1) 100%);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 16px;
     margin: 0;
@@ -77,67 +82,255 @@ nav li.menu-item a:focus {
 
 
 section {
-    margin: 0 auto;
+    margin-top: 50px;
     max-width: 1100px;
     padding: 2.5rem 1.75rem 3.5rem 1.75rem;
 }
 /*side nav*/
 
 .sidenav {
+    margin-top: 3em;
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: var(--sidebar-main-color);
+    background-color: var(--dogerBlue);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
   }
-  
-  .sidenav a {
-    margin-top: 1.5em;
-    padding: 8px, 8px, 12px, 8px;
+  .sidenav a figure img{
+    margin-left: 20px;
+    color: var(--sidebar-main-color)
+  }
+  .sidenav span{
+    color: var(--sidebar-main-color);
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 16px;
-    color: var(--action-color);
     display: block;
     transition: 0.3s;
     font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .sidenav a {
+   
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: var(--sidebar-main-color);
+    display: block;
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 12px;
     
   }
   
-  .sidenav a .nav-link :hover {
-    color: var(--sidebar-hover-link);
-    background-color: var(--action-color-hover);
+  .sidenav a .nav-link :hover,
+  .sidenav a .nav-link :focus {
+    color: var(--sidebar);
+    background-color: var(--sidebar);
   }
   
-  .sidenav .closebtn {
+  .sidenav .btn-close {
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    font-size: 15px;
+    margin-left: 60px;
+    margin-top: 25px;
+    color: var(--sidebar);
   }
+  /*.funds-section{
+    height: 300px;
+    background-image: url(../images/bg-img.webp);
+    background-repeat: no-repeat;
+  }
+  */
+  #title{
+    font-size: 2em;
+    margin: 0.5em;
+    color: var(--dogerBlue);
+    width: fit-content;
+    background-color: var(--whiteColor);
+    align-content: start;
+    margin-top: -30px;
+  }
+  #universal-card{
+    background-color: var(--whiteColor);
+    margin: 10px;
+    padding: 12px;
+    border: 1px solid var(--lightGrey);
+  }
+
+ 
+
   #menu-icon{
     margin: 2px;
   }
+  /*func card */
   #fund-card{
     border-bottom: 3px solid var(--action-color);
+    background: var(--sidebar-main-color);
+    box-shadow: 2px 2px 6px var(--greycolor);
+    width: 18rem;
+    text-decoration: none;
   }
   
+  .img-thumbnail{
+    width: 210px;
+    height: 210px;
+    border: 1px solid var(--action-color);
+    border-radius: 60%;
+  }
+  #card-image{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+  #fund-img-wide{
+    height: 350px;
+    border-radius: 2%;
+  }
+  .card{
+    height: 350px;
+    padding: 12px;
+    width: auto;
+    box-shadow: 5px 10px 18px var(--greycolor);
+    border-radius: 5%;
+  }
+  .card span{
+    font-size: 12px;
+    font-weight: lighter;
+  }
+  .card p{
+    font-weight: bold;
+  }
+  .card[data-clickable=true]{
+    cursor: pointer;
+  }
+  .card img :hover{
+    object-fit: cover;
+    height: 360px;
+    color: var(--filter-reset);
+  }
+
+  #formFile{
+    width: 90px;
+  }
+  #user-fund-img{
+  
+    width: 100px;
+    height: 100px;
+  }
+  /*donate*/
+  #donate-content{
+    background-color: var(--whiteColor);
+    border-radius: 2%;
+    padding: 2em 5em;
+  }
+  .donate-img{
+    width: 100px;
+    height: 60px;
+  }
+  .donate-details span {
+    font-weight: bold;
+  }
+  .author-section .author{
+    font-size: 9px;
+    color: var(--lightGrey);
+  }
+  .author-section{
+    font-size: 12px;
+    color: var(--lightGrey);
+  }
+  .payment-option1{
+    border: 1px solid var(--darkGrey);
+    padding: 1.5em;
+    align-items: center;
+    margin-bottom: -1em;
+  }
+  .payment-option2{
+    margin-top: -1.4em;
+    border-bottom: 1px solid var(--darkGrey);
+    border-left: 1px solid var(--darkGrey);
+    border-right: 1px solid var(--darkGrey);
+    padding: 1.5em;
+    align-items: center;
+  }
+  #ufc-icon{
+    height: 20px;
+    width: 20px;
+  }
+
+  #donateAmount, #tipAmount, #totalAmount{
+    font-weight: bold;
+    color: var(--greenColor);
+  }
+  .currency{
+    font-weight: bold;
+    font-style: italic;
+    color: var(--greenColor);
+  }
+  #postFix{
+    background-color: var(--sidebar-link);
+    font-style: italic;
+    font-weight: bold;
+  }
+  /*progressbar*/
+  .skill {
+    border-radius: 50;
+    margin-bottom: 35px;
+    position: relative;
+    overflow-x:hidden;
+    }
+  .skill:before {
+      width: 100%;
+      height: 5px;
+      content: "";
+      display: block;
+      position: absolute;
+      background: #959595;
+      bottom: 0;
+    }
+    .skill-bar {
+      border-radius: 50;
+      width: 100%;
+      height: 5px;
+      background: var(--greenColor);
+      display: block;
+      position: relative;
+      border-radius: 6%;
+      }
+      
+      .skill-bar span {
+      position: absolute;
+      border-top: 5px solid var(--sidebar-main-color);
+      padding: 0;
+      font-size: 18px;
+      padding: 3px 0;
+      font-weight: 500;
+      }
+      .skill1 .skill-count1 {
+        right: 0;
+        }
+        
+        .skill1 {
+        width: 2%;
+        }
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
 
 footer {
-    background-color: var(--action-color);
+    background-color: var(--dogerBlue);
     text-align: center;
+    width: 100%;
 }
 footer .copyrights {
-    background-color: var(--action-color);
+    text-align: center;
     color: #FFFFFF;
     padding: .25rem 1.75rem;
 }

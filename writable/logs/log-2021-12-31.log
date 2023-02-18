@@ -1,0 +1,49 @@
+ERROR - 2021-12-31 18:21:30 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect('localhost', 'root', 'Mongoose_070791', 'ufundme', 3306, '', 0)
+#1 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fu...', Array, false)
+#4 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /Users/macintoshhdd/Projects/ufundme/app/Controllers/Fundraiser.php(32): CodeIgniter\BaseModel->save(Array)
+#9 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Fundraiser->create()
+#10 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+#11 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /Users/macintoshhdd/Projects/ufundme/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(46): require_once('/Users/macintos...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fu...', Array, false)
+#3 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#4 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#5 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#6 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#7 /Users/macintoshhdd/Projects/ufundme/app/Controllers/Fundraiser.php(32): CodeIgniter\BaseModel->save(Array)
+#8 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Fundraiser->create()
+#9 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+#10 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Users/macintoshhdd/Projects/ufundme/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(46): require_once('/Users/macintos...')
+#13 {main}
+CRITICAL - 2021-12-31 18:21:30 --> Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fundraise` (`user_id`, `organisation`, `cause`, `email`, `country`, `city`, `address_one`, `address_two`, `phone_number`, `target_amount`, `title`, `active`, `created_at`, `updated_at`) VALUES (:user_id:, :organisation:, :cause:, :email:, :country:, :city:, :address_one:, :address_two:, :phone_number:, :target_amount:, :title:, :active:, :created_at:, :updated_at:)', [...], false)
+ 3 SYSTEMPATH/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 4 SYSTEMPATH/BaseModel.php(748): CodeIgniter\Model->doInsert([...])
+ 5 SYSTEMPATH/Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 6 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 7 APPPATH/Controllers/Fundraiser.php(32): CodeIgniter\BaseModel->save([...])
+ 8 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Fundraiser->create()
+ 9 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')

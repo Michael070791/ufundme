@@ -4,7 +4,7 @@
 <?= $this->section("body") ?>
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="universal-card">
         <div class="panel panel-default">
             <div class="panel-body">
                 <?php if (isset($validation)) : ?>
@@ -14,8 +14,9 @@
                             </div>
                         </div>
                 <?php endif; ?>
+                <h1 id="title">Login</h1>
                 <form class="row g-3" action="<?= base_url('login') ?>" method="post">
-                            <div class="input-group mb-3">
+                            <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa-sharp fa-solid fa-user"></i></span>
                                 <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
                             </div>
@@ -25,7 +26,7 @@
                             </div>
                         <div class="row">
                             <div class="col-md-6" >
-                                <button type="submit" class="btn btn-outline-success">Login</button>
+                                <button type="submit" class="btn btn-success">Login</button>
                             </div>
                             <div class="col-md-6">
                                 <a class="forgot-password" href= "" >forgot password</a>
@@ -33,10 +34,8 @@
                         </div>
                 </form>
                 <hr/>
-                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                    <div class="btn-group" role="group">
-                        <a role="button" href="<?php echo base_url('register')?>" class="btn btn-outline-primary">Register</a>
-                    </div>
+                <div class="d-grid gap-2">
+                    <a role="button" href="<?php echo base_url('register')?>" class="btn btn-outline-primary">Register</a>
                 </div>
             </div>
         </div>

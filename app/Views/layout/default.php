@@ -25,7 +25,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 </head>
-<body>
+<body >
 
 <nav class="navbar navbar-expand-lg fixed-top bg-light">
   <div class="container-fluid">
@@ -44,7 +44,7 @@
             </li>
             <?php $email = session()->get('email');
                   if(!empty($email)):?>
-                    <li class="nav-item" onclick="openNav()"><a class="nav-link" href="#" ><i class="fa-sharp fa-solid fa-circle-user"></i>Hi, <?= session()->get('first_name') ?></a></li>
+                    <li class="nav-item" onclick="openNav()"><a class="nav-link" href="#" ><i class="fa-sharp fa-solid fa-circle-user"></i> Hi, <?= session()->get('first_name') ?></a></li>
                   <?php else: ?>
                     <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login')?>"><i class="fa-sharp fa-solid fa-right-to-bracket"></i> Sign in</a></li>
             <?php endif;?>
@@ -55,41 +55,60 @@
 </nav>
 
 
-<!-- CONTENT -->
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<!-- <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
   <a>
     <figure>
       <img class="thumbnail" id="avatar" src="<?php echo base_url('assets/images/User.png')?>"/>
-      <figcaption>
-        <a href="#"><?= session()->get('last_name')?> <?= session()->get('first_name')?></a>
-      </figcaption>
     </figure>
   </a>
-  <a class="nav-link" href="<?php echo base_url('funds')?>">Your Fundraise</a>
+  <span ><i class="fa-sharp fa-solid fa-id-card"></i> <?= session()->get('last_name')?> <?= session()->get('first_name')?></span>
+  <a class="nav-link" href="<?php echo base_url('user-funds')?>"><i class="fa-sharp fa-solid fa-briefcase"></i> Fundraise</a>
   <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-gear"></i> Settings</a>
   <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-wallet"></i> Wallet</a>
   <a class="nav-link" href="<?php echo base_url('logout')?>"><i class="fa-sharp fa-solid fa-right-from-bracket"></i> Logout</a>
+  </div>
+</div> -->
+
+<!-- CONTENT -->
+<div id="mySidenav" class="sidenav">
+  <a type="button" class="btn-close" onclick="closeNav()" aria-label="Close"></a>
+  <a>
+    <figure>
+      <img class="thumbnail" id="avatar" src="<?php echo base_url('assets/images/User.png')?>"/>
+    </figure>
+  </a>
+  <span ><i class="fa-sharp fa-solid fa-id-card"></i> <?= session()->get('last_name')?> <?= session()->get('first_name')?></span>
+  <a class="nav-link" href="<?php echo base_url('user-funds')?>"><i class="fa-sharp fa-solid fa-briefcase"></i> Fundraise</a>
+  <a class="nav-link" href="<?= base_url('settings/'.session()->id)?>"><i class="fa-sharp fa-solid fa-gear"></i> Settings</a>
+  <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-wallet"></i> Wallet</a>
+  <a class="nav-link" href="<?php echo base_url('logout')?>"><i class="fa-sharp fa-solid fa-right-from-bracket"></i> Logout</a>
+  
 </div>
 
-<section class="container fluid">
+<section  class="container-fluid">
+
 
 <?= $this->renderSection("body") ?>
 
 <div class="row g-3">
   
+  
     <?php if(!empty($fundraisers)):?>
       <h3>Fundraisers in your community</h3>
         <?php foreach ($fundraisers as $item):?>
           <div class="col-sm-4">
-            <div id="fund-card" class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text"><?= $item['cause']?></p>
-                <p class="card-text badge-">Target <span class="badge text-bg-success">UFC<?= $item['target_amount']?></span></p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              </div>
-            </div>
+              <a id="fund-card" class="card" data-clickable="true" href="<?= base_url('detail/'.$item['id'])?>">
+                <img id="card-image" src="<?= $item['image']?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text"><?= $item['title']?></p>
+                  <p class="card-text badge-">Target <span class="badge text-bg-success">UFC<?= $item['target_amount']?></span></p>
+                </div>
+              </a>
           </div>
         <?php endforeach;?>
     <?php endif;?>
@@ -121,6 +140,7 @@
 </footer>
 
 <!-- SCRIPTS -->
+
 <script src="<?php echo base_url(); ?>/assets/js/jquery.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/javascript.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap/js/bootstrap.js"></script>
