@@ -1,0 +1,34 @@
+CRITICAL - 2022-11-29 02:51:12 --> _get_uri(): Argument #1 ($relativePath) must be of type string, null given, called in /Users/macintoshhdd/Projects/ufundme/vendor/codeigniter4/framework/system/Helpers/url_helper.php on line 87
+in SYSTEMPATH/Helpers/url_helper.php on line 31.
+ 1 SYSTEMPATH/Helpers/url_helper.php(87): _get_uri(null, Object(Config\App))
+ 2 SYSTEMPATH/Helpers/url_helper.php(106): site_url(null, null, Object(Config\App))
+ 3 APPPATH/Views/fundraiser/edit.php(15): base_url(null)
+ 4 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/fundraiser/edit.php')
+ 5 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('fundraiser/edit', [], true)
+ 7 APPPATH/Controllers/Fundraiser.php(44): view('fundraiser/edit', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Fundraiser->edit('6')
+ 9 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-11-29 04:20:21 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH/Controllers/Fundraiser.php on line 40.
+ 1 APPPATH/Controllers/Fundraiser.php(40): count(null)
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Fundraiser->edit('$')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-11-29 04:31:14 --> Trying to access array offset on value of type null
+in APPPATH/Views/fundraiser/edit.php on line 7.
+ 1 APPPATH/Views/fundraiser/edit.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH/Views/fundraiser/edit.php', 7)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/fundraiser/edit.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('fundraiser/edit', [], true)
+ 5 APPPATH/Controllers/Fundraiser.php(41): view('fundraiser/edit', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Fundraiser->edit('$')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')

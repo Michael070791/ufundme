@@ -4,7 +4,7 @@
 <?= $this->section("body") ?>
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-8" id="universal-card">
             <h3>We are here to assist you raise funds to support your cause</h3>
             <h5>please provide these relevant details to assist in your fundraising journey.</h5>
            <form action="" method="post" class="row g-3">
@@ -14,16 +14,19 @@
                     </div>
                 <?php endif;?>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" placeholder="Organisation optional" name="organisation">
+                    <input type="text" class="form-control" placeholder="Organisation (optional)" name="organisation">
                 </div>
                 <div class="col-sm-6">
-                    <textarea type="text" class="form-control" required placeholder="*Cause" name="cause"></textarea>
+                    <textarea type="text" required class="form-control" required placeholder="*Cause" name="cause"></textarea>
                 </div>
                 <div class="md-3">
-                    <input type="text" class="form-control" id="inputAddress" placeholder="*1234 Main St" name="address1">
+                    <input type="text" required class="form-control" id="title" placeholder="(*Title: Support for the needy)" name="title">
                 </div>
                 <div class="md-3">
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="*Apartment, studio, or floor / gps code" name="address2">
+                    <input type="text" required class="form-control" id="inputAddress" placeholder="*1234 Main St" name="address1">
+                </div>
+                <div class="md-3">
+                    <input type="text" required class="form-control" id="inputAddress2" placeholder="*Apartment, studio, or floor / gps code" name="address2">
                 </div>
                 <div class="col-sm-4">
                     <select id="inputCountry" name="country" class="form-select">
@@ -37,7 +40,7 @@
                 </div>
                 <div class="input-group col-sm-4">
                 <span class="input-group-text">UFC</span>
-                    <input type="text" class="form-control" name="amount" placeholder="*Taget amount" aria-label="Amount in UFC">
+                    <input type="text" required class="form-control" name="amount" placeholder="*Taget amount" aria-label="Amount in UFC">
                 <span class="input-group-text">.00</span>
                 </div>
                 <div class="col-sm-12">

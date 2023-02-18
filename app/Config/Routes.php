@@ -36,18 +36,27 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->match(['get', 'post'], 'register', 'Profile::register', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], 'register', 'Register::create', ['filter' => 'noauth']);
 $routes->match(['get', 'post'], 'login', 'Profile::login', ['filter' => 'noauth']);
 
 //fundraise
 $routes->match(['get', 'post'], 'create', 'Fundraiser::create', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'edit/(:num)', 'Fundraiser::edit/$1', ['filter' => 'auth']);
-$routes->match(['get'], 'funds', 'Profile::funds');
+$routes->match(['get'], 'detail/(:num)', 'Fundraiser::detail/$1');
+$routes->match(['get'], 'user-funds', 'Profile::funds');
+$routes->match(['get', 'post'], 'settings/(:num)', 'Profile::settings/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], '(:num)/donate', 'Fundraiser::donate/$1');
 
 $routes->get('dashboard', 'Profile::index', ['filter' => 'auth']);
 $routes->get('profile', 'Profile::index', ['filter' => 'auth']);
 $routes->get('logout', 'Profile::logout');
 
+//admin
+$routes->match(['get', 'post'], 'admin', 'AdminController::index', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'admin/users', 'AdminController::users');
+$routes->match(['get', 'post'], 'admin/funds', 'AdminController::funds');
+$routes->match(['get', 'post'], 'admin/fund/(:num)', 'AdminController::toggleActivateFundRaiser/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'admin/fund/delete/(:num)', 'AdminController::deleteFundRaider/$1', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

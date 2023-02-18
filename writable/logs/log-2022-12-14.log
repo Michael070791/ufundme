@@ -1,0 +1,41 @@
+CRITICAL - 2022-12-14 07:56:42 --> Undefined variable $fundraise
+in APPPATH/Controllers/Fundraiser.php on line 137.
+ 1 APPPATH/Controllers/Fundraiser.php(137): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundraise', 'APPPATH/Controllers/Fundraiser.php', 137)
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Fundraiser->donate('3')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Fundraiser))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-12-14 08:02:03 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH/Views/profile/dashboard.php on line 15.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('profile/dashboard', [], true)
+ 4 APPPATH/Controllers/Profile.php(13): view('profile/dashboard')
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Profile->index()
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-12-14 08:02:24 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH/Views/profile/dashboard.php on line 15.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('profile/dashboard', [], true)
+ 4 APPPATH/Controllers/Profile.php(13): view('profile/dashboard')
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Profile->index()
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-12-14 08:03:09 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH/Views/profile/dashboard.php on line 15.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('profile/dashboard', [], true)
+ 4 APPPATH/Controllers/Profile.php(13): view('profile/dashboard')
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Profile->index()
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')

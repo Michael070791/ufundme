@@ -2,7 +2,7 @@ $(document).ready(function(){
   var base_url = "http://localhost:8080"
   var countries_url = base_url + '/countries.json';
   var cities_url = base_url + '/cities.json';
-
+  $('#tableData').DataTable();
   var cities_data = {};
   fetch(countries_url)
     .then(res => res.json())
@@ -39,16 +39,29 @@ $(document).ready(function(){
      }
       
     });
-
-  
+    $('#donatingAmount').on('keyup', function(){
+      var amount = parseFloat($(this).val());
+      $('#donateAmount').text(amount.toFixed(2));
+      var tip = amount*0.15;
+      $('#tipAmount').text(tip.toFixed(2));
+      var total = (amount + tip);
+      $('#totalAmount').text(total.toFixed(2));
+    })
+    //card
+    $('#fund-card').on('click', function(e){
+      var href = $(e.currentTarget).data('href');
+      window.location = href;
+    });
 });
 
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
   }
   
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
   }
 
   function togglePassword(){
@@ -57,4 +70,26 @@ function openNav() {
     const type = passwordValue.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordValue.setAttribute('type', type);
     toggleIcon.classList.toggle("fa-eye");
+}
+
+function onFileUpload(input, id) {
+  id = id || '#ajaxImgUpload';
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $(id).attr('src', e.target.result).width(210).height(210)
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+}
+
+let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("fa-bars" ,"fa-list");
+}else
+  sidebarBtn.classList.replace("fa-list", "fa-bars");
+  
 }

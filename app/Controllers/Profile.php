@@ -41,10 +41,18 @@ class Profile extends BaseController
 
                 $user = $model->where('email', $this->request->getVar('email'))
                     ->first();
+                switch ($user['admin']) {
+                    case '1':
+                        $this->setUserSession($user);
+                        return redirect()->to(base_url('admin'));
+                        break;
+                    
+                    default:
+                        $this->setUserSession($user);
+                        return redirect()->to(base_url('/'));
+                        break;
+                }
 
-                // Stroing session values
-                $this->setUserSession($user);
-                // Redirecting to dashboard after login
                 return redirect()->to(base_url('/'));
 
             }
@@ -68,47 +76,8 @@ class Profile extends BaseController
         return true;
     }
 
-    public function register()
-    {
-        $data = [];
-
-        if ($this->request->getMethod() == 'post') {
-            //let's do the validation here
-            $rules = [
-                'first_name' => 'required|min_length[3]|max_length[20]',
-                'last_name' => 'required|min_length[3]|max_length[20]',
-                'phone_number' => 'required|min_length[3]|max_length[20]',
-                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
-                'password' => 'required|min_length[8]|max_length[255]',
-            ];
-
-            if (!$this->validate($rules)) {
-
-                return view('profile/register', [
-                    "validation" => $this->validator,
-                ]);
-            } else {
-                $model = new UserModel();
-
-                $newData = [
-                    'first_name' => $this->request->getVar('first_name'),
-                    'last_name' => $this->request->getVar('last_name'),
-                    'phone_number' => $this->request->getVar('phone_number'),
-                    'email' => $this->request->getVar('email'),
-                    'password' => $this->request->getVar('password'),
-                ];
-                $model->save($newData);
-                $session = session();
-                $session->setFlashdata('success', 'Successful Registration');
-                return redirect()->to(base_url('login'));
-            }
-        }
-        return view('profile/register');
-    }
-
     public function funds()
     {
-
         $data = [];
         $model = new UserModel();
         $fundraiseModel = new FundraiserModel();
@@ -117,13 +86,100 @@ class Profile extends BaseController
         $data['user'] = $model->where('id', session()->get('id'))->first();
         return view('profile/dashboard', $data);
     }
+    public function settings($id = null)
+    {
+        $data = [];
+
+        $model = new UserModel();
+
+        $user = $model->where('id', $id)->first();
+
+        if(isset($_POST['updateDetails'])){
+
+            $editData = [
+                'first_name' => $this->request->getVar('first_name'),
+                'last_name' => $this->request->getVar('last_name'),
+                'email' => $this->request->getVar('email'),
+                'phone_number' => $this->request->getVar('phone_number')
+            ];
+            if($model->update($id, $editData)){
+                $user = $model->where('id', $id)->first();
+                $this->setUserSession($user);
+                session()->setFlashdata('message', 'details updated successfully');
+                redirect()->to('/');
+            }else{
+                //TODO:: What hapens when error occurs
+            }
+        }
+        if(isset($_POST['updatePassword'])){
+           
+            $oldPassword = $this->request->getVar('oldPassword');
+            $newPassword = $this->request->getVar('newPassword');
+            $rules = [
+                'oldPassword' => 'required|min_length[8]|max_length[255]',
+                'newPassword' => 'required |min_length[8]|max_length[255]',
+                'repeatNewPassword' => 'required |min_length[8]|max_length[255]|match'
+            ];
+            $editData = [
+                'password' => $newPassword
+            ];
+            $model->update($id, $editData);
+
+            return redirect()->to('/');
+        }
+        if(isset($_POST['uploadUserImage'])){
+            $validateImage = $this->validate([
+                'file' => [
+                    'uploaded[file]',
+                    'mime_in[file, image/png, image/jpg,image/jpeg, image/gif]',
+                    'max_size[file, 4096]'
+                ],
+            ]);
+            if(!$validateImage){
+
+               session()->setFlashdata('error', 'Validation error');
+
+            }
+            if($img = $this->request->getVar('file')){
+
+            //if file is not empty
+            if (!$img->hasMoved()){
+
+                session()->setFlashdata('error', 'Image not saved');
+
+            }
+                $img->move('writable/uploads');
+                $data = [
+                'img_name' => $img->getClientName(),
+                'file'  => $img->getClientMimeType()
+                ];
+
+                if(!empty($data['img_name'])){
+
+                    $editData = [
+                        'image' => "writable/uploads/".$data['img_name']
+                    ];
+
+                    $model->update($id, $editData);
+
+                    session()->setFlashdata('message', 'Image uploaded successfully');
+
+                    return redirect()->to('/');
+                }
+            
+        }
+
+        }
+        if(!is_null($user)){
+            $data['user'] = $user;
+            return view('profile/settings', $data);
+        }
+    }
 
     public function logout()
     {
         session()->destroy();
         return redirect()->to('login');
     }
-
-
 
 }
