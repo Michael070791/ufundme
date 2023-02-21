@@ -42,8 +42,9 @@ $routes->match(['get', 'post'], 'login', 'Profile::login', ['filter' => 'noauth'
 //fundraise
 $routes->match(['get', 'post'], 'create', 'Fundraiser::create', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'edit/(:num)', 'Fundraiser::edit/$1', ['filter' => 'auth']);
-$routes->match(['get'], 'detail/(:num)', 'Fundraiser::detail/$1');
-$routes->match(['get'], 'user-funds', 'Profile::funds');
+$routes->match(['get', 'post'], 'delete/(:num)', 'Fundraiser::deleteFund/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'detail/(:num)', 'Fundraiser::detail/$1');
+$routes->match(['get'], 'user-funds', 'Profile::funds', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'settings/(:num)', 'Profile::settings/$1', ['filter' => 'auth']);
 $routes->match(['get', 'post'], '(:num)/donate', 'Fundraiser::donate/$1');
 
@@ -57,6 +58,8 @@ $routes->match(['get', 'post'], 'admin/users', 'AdminController::users');
 $routes->match(['get', 'post'], 'admin/funds', 'AdminController::funds');
 $routes->match(['get', 'post'], 'admin/fund/(:num)', 'AdminController::toggleActivateFundRaiser/$1', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'admin/fund/delete/(:num)', 'AdminController::deleteFundRaider/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'admin/user/delete/(:num)', 'AdminController::deleteUser/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'admin/user/enableadmin/(:num)', 'AdminController::enableAdmin/$1', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

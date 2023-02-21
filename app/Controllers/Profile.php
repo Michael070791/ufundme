@@ -76,6 +76,7 @@ class Profile extends BaseController
         return true;
     }
 
+    //list of fundraisers
     public function funds()
     {
         $data = [];
@@ -84,8 +85,11 @@ class Profile extends BaseController
 
         $data['userFunds'] = $fundraiseModel->where('email', session()->get('email'))->findAll();
         $data['user'] = $model->where('id', session()->get('id'))->first();
+        $data['inactive'] = $fundraiseModel->where('email', session()->get('email'))->where('active', 0)->findAll();
         return view('profile/dashboard', $data);
     }
+
+
     public function settings($id = null)
     {
         $data = [];

@@ -21,6 +21,9 @@
      <link href="<?php echo base_url();?>/assets/fontawesome/css/solid.min.css" rel="stylesheet">
      <link href="<?php echo base_url();?>/assets/fontawesome/css/brands.css" rel="stylesheet">
      <link href="<?php echo base_url();?>/assets/fontawesome/css/brands.min.css" rel="stylesheet">
+
+     <!--datatables-->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
      
 
 <!-- Latest compiled and minified JavaScript -->
@@ -149,7 +152,8 @@
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.js" rel="stylesheet">
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.min.js" rel="stylesheet">
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.regular.js" rel="stylesheet">
-<!-- -->
+<!--datatbales -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
 </body>
 </html>

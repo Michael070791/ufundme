@@ -2,8 +2,8 @@
 <!--title section-->
 <?= $this->section("title")?> users <?= $this->endSection() ?>
 <?= $this->section("body") ?>
-<div class="row page-entry">
-   <div class="col-sm-12">
+<div class="row">
+   <div class="col-sm-12 page-entry">
    <h3>users</h3>
     <table id="tableData" class="table table-striped" style="width:100%">
       <thead>
@@ -45,7 +45,10 @@
                                     <a href="#" class="btn btn-sm btn-danger"><i class="fa-solid fa-lock"></i></a>
                              <?php endif;?>
                            <?php if($user['admin'] == 0):?>
-                                <a href="#" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="<?php echo base_url('admin/user/delete/'.$user['id'])?>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="<?php echo base_url('admin/user/enableadmin/'.$user['id'])?>" class="btn btn-sm btn-primary"><i class="fa-solid fa-user"></i></a>
+                                <?php else:?>
+                                    <a href="<?php echo base_url('admin/user/enableadmin/'.$user['id'])?>" class="btn btn-sm btn-success"><i class="fa-solid fa-user-circle"></i></a>
                             <?php endif;?>
                         </td>
             </tr>
