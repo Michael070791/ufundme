@@ -39,6 +39,8 @@ class Fundraiser extends BaseController
         }
         return view('fundraiser/create');
     }
+
+    //edit fund
     public function edit($id){
         $data = [];
         $model = new FundraiserModel();
@@ -106,6 +108,8 @@ class Fundraiser extends BaseController
 
         return view('fundraiser/edit', $data);
     }
+
+    //fund details
     public function detail($id){
         $model = new FundraiserModel();
         $donatModel = new DonateModel();
@@ -120,6 +124,17 @@ class Fundraiser extends BaseController
             return view('fundraiser/detail', $data);
         }
         session()->setFlashdata('error', 'Oops record broken or not found');
+    }
+
+     //delete fund
+     public function deleteFund($id = null){
+        $data = [];
+        $model = new FundraiserModel();
+        if($model->delete($id)){
+            $data['userFunds'] = $model->where('email', session()->get('email'))->findAll();
+            
+            return view('profile/dashboard', $data);
+        }
     }
 
     public function fundraisers(){

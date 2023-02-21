@@ -73,23 +73,45 @@ class AdminController extends ResourceController
     }
 
     /**
-     * Return the properties of a resource object
+     * delete user
      *
-     * @return mixed
+     * 
      */
-    public function show($id = null)
+    public function deleteUser($id = null)
     {
+        $data = [];
+        $model = new UserModel();
+        if($model->delete($id)){
+            $data = ['users' => $model->orderBy('created_at', 'DESC')->findAll()];
+            return view('admin/users/index', $data);
+            
+        }
         //
     }
 
     /**
-     * Return a new resource object, with default properties
+     * Enable and disable admin
      *
-     * @return mixed
      */
-    public function new()
+    public function enableAdmin($id = null)
     {
-        //
+        $data = [];
+        $model = new UserModel();
+        $user = $model->where('id', $id)->first();
+        switch ($user['admin']) {
+            case 1:
+                $editData = ['admin' => 0];
+                $model->update($id, $editData);
+                $data = ['users' => $model->orderBy('created_at', 'DESC')->findAll()];
+                return view('admin/users/index', $data);
+                break;
+            default:
+                $editData = ['admin' => 1];
+                $model->update($id, $editData);
+                $data = ['users' => $model->orderBy('created_at', 'DESC')->findAll()];
+                return view('admin/users/index', $data);
+                break;
+        }
     }
 
     /**

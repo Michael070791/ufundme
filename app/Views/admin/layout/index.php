@@ -14,7 +14,7 @@
     <link href="<?php echo base_url();?>/assets/css/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/bootstrap/css/bootstrap-grid.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/css/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
 
 
      <!--fonts-->
@@ -57,13 +57,13 @@
             <span class="links_name">Donations</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li >
+          <a href="#" disabled>
           <i class="fa-solid fa-chart-pie"></i>
             <span class="links_name">Analytics</span>
           </a>
         </li>
-        <li>
+        <li >
           <a href="#">
             <i class="fa-solid fa-message"></i>
             <span class="links_name">Messages</span>
@@ -108,9 +108,7 @@
 
     </div>
   </section>
-  <script src="<?php echo base_url(); ?>/assets/js/jquery.js"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/dataTables/dataTables.min.js"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/dataTables/dataTables.bootstrap5.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/jquery.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/javascript.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap/js/bootstrap.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap/js/bootstrap.min.js"></script>
@@ -118,6 +116,7 @@
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.js" rel="stylesheet">
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.min.js" rel="stylesheet">
 <link href="<?php echo base_url();?>/assets/fontawesome/js/fontawesome.regular.js" rel="stylesheet">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
 </body>
 </html>
